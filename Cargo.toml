@@ -2,7 +2,7 @@
 name = "krakel"
 version = "0.2.0"
 edition = "2021"
-description = "A simple 2d kd-tree ported from OpenCamLib"
+description = "A lean 2d kd-tree ported from OpenCamLib"
 license = "LGPL-2.1-only"
 
 [dependencies]
