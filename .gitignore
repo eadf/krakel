@@ -1,0 +1,27 @@
+
+# Ignore build and IDE artifacts
+/target
+/.idea
+*.iml
+*.iws
+*.ipr
+*.profraw
+
+# Ignore temporary files
+*.swp
+*.swo
+*.db
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# ignore project specific artifacts
+*.pyc
+
+# Remove Cargo.lock from gitignore if creating an executable, leave it for libraries
+# More information here https://doc.rust-lang.org/cargo/guide/cargo-toml-vs-cargo-lock.html
+/Cargo.lock

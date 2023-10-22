@@ -1,0 +1,17 @@
+[package]
+name = "krakel"
+version = "0.1.0"
+edition = "2021"
+description = "A simple 2d kd-tree ported from OpenCamLib"
+license = "LGPL-2.1-only"
+
+[features]
+# needed for tests and impls of PointTrait for glam::Vec2 and glam::DVec2
+glam = ["vector-traits/glam"]
+
+[dependencies]
+thiserror = "1.0.50"
+vector-traits = { version="0.1.0", features = ["approx"] }
+
+[dev-dependencies]
+rand = "0.8.5"
