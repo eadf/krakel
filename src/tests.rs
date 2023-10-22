@@ -1,10 +1,8 @@
 use super::{KDTree, PointTrait};
 use std::cmp::Reverse;
-use vector_traits::glam::{dvec2, vec2};
-use vector_traits::{
-    approx::ulps_eq,
-    glam::{DVec2, Vec2},
-};
+use glam::{dvec2, vec2};
+use  approx::ulps_eq;
+use glam::{DVec2, Vec2};
 
 #[derive(Default)]
 pub struct MaximumTracker<T> {

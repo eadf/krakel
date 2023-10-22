@@ -25,8 +25,8 @@ use std::{
     fmt::Debug,
     ops::{AddAssign, DivAssign, MulAssign, SubAssign},
 };
-use vector_traits::approx::UlpsEq;
-use vector_traits::num_traits::{real::Real, FromPrimitive, Zero};
+use approx::UlpsEq;
+use num_traits::{real::Real, FromPrimitive, Zero};
 
 mod impls;
 

@@ -22,7 +22,7 @@
 use super::*;
 use std::fmt;
 #[cfg(feature = "glam")]
-use vector_traits::glam::{DVec2, Vec2};
+use glam::{DVec2, Vec2};
 
 #[cfg(feature = "glam")]
 impl PointTrait for Vec2 {
