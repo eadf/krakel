@@ -21,10 +21,16 @@
 
 use super::*;
 use std::fmt;
-#[cfg(feature = "glam")]
-use glam::{DVec2, Vec2};
 
-#[cfg(feature = "glam")]
+#[cfg(all(feature = "cgmath", feature = "vector-traits"))]
+use vector_traits::cgmath;
+#[cfg(all(feature = "glam", feature = "vector-traits"))]
+use vector_traits::{
+    glam::{DVec2, Vec2},
+    Vec2A,
+};
+
+#[cfg(all(feature = "glam", feature = "vector-traits"))]
 impl PointTrait for Vec2 {
     type PScalar = f32;
     #[inline(always)]
@@ -63,7 +69,124 @@ impl PointTrait for Vec2 {
     const DIMENSION: u8 = 2;
 }
 
-#[cfg(feature = "glam")]
+#[cfg(all(feature = "glam", feature = "vector-traits"))]
+impl PointTrait for Vec2A {
+    type PScalar = f32;
+    #[inline(always)]
+    fn x(&self) -> Self::PScalar {
+        self.0.x
+    }
+    #[inline(always)]
+    fn y(&self) -> Self::PScalar {
+        self.0.y
+    }
+    #[inline(always)]
+    fn set_x(&mut self, x: Self::PScalar) {
+        self.0.x = x;
+    }
+    #[inline(always)]
+    fn set_y(&mut self, y: Self::PScalar) {
+        self.0.y = y;
+    }
+    #[inline(always)]
+    fn at(&self, index: u8) -> Self::PScalar {
+        match index {
+            0 => self.0.x,
+            1 => self.0.y,
+            _ => unreachable!(),
+        }
+    }
+    #[inline(always)]
+    fn at_mut(&mut self, index: u8) -> &mut Self::PScalar {
+        match index {
+            0 => &mut self.0.x,
+            1 => &mut self.0.y,
+            _ => unreachable!(),
+        }
+    }
+
+    const DIMENSION: u8 = 2;
+}
+
+#[cfg(all(feature = "cgmath", feature = "vector-traits"))]
+impl PointTrait for cgmath::Vector2<f32> {
+    type PScalar = f32;
+    #[inline(always)]
+    fn x(&self) -> Self::PScalar {
+        self.x
+    }
+    #[inline(always)]
+    fn y(&self) -> Self::PScalar {
+        self.y
+    }
+    #[inline(always)]
+    fn set_x(&mut self, x: Self::PScalar) {
+        self.x = x;
+    }
+    #[inline(always)]
+    fn set_y(&mut self, y: Self::PScalar) {
+        self.y = y;
+    }
+    #[inline(always)]
+    fn at(&self, index: u8) -> Self::PScalar {
+        match index {
+            0 => self.x,
+            1 => self.y,
+            _ => unreachable!(),
+        }
+    }
+    #[inline(always)]
+    fn at_mut(&mut self, index: u8) -> &mut Self::PScalar {
+        match index {
+            0 => &mut self.x,
+            1 => &mut self.y,
+            _ => unreachable!(),
+        }
+    }
+
+    const DIMENSION: u8 = 2;
+}
+
+#[cfg(all(feature = "cgmath", feature = "vector-traits"))]
+impl PointTrait for cgmath::Vector2<f64> {
+    type PScalar = f64;
+    #[inline(always)]
+    fn x(&self) -> Self::PScalar {
+        self.x
+    }
+    #[inline(always)]
+    fn y(&self) -> Self::PScalar {
+        self.y
+    }
+    #[inline(always)]
+    fn set_x(&mut self, x: Self::PScalar) {
+        self.x = x;
+    }
+    #[inline(always)]
+    fn set_y(&mut self, y: Self::PScalar) {
+        self.y = y;
+    }
+    #[inline(always)]
+    fn at(&self, index: u8) -> Self::PScalar {
+        match index {
+            0 => self.x,
+            1 => self.y,
+            _ => unreachable!(),
+        }
+    }
+    #[inline(always)]
+    fn at_mut(&mut self, index: u8) -> &mut Self::PScalar {
+        match index {
+            0 => &mut self.x,
+            1 => &mut self.y,
+            _ => unreachable!(),
+        }
+    }
+
+    const DIMENSION: u8 = 2;
+}
+
+#[cfg(all(feature = "glam", feature = "vector-traits"))]
 impl PointTrait for DVec2 {
     type PScalar = f64;
     #[inline(always)]

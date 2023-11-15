@@ -6,6 +6,7 @@
 *.iws
 *.ipr
 *.profraw
+/tarpaulin-report.html
 
 # Ignore temporary files
 *.swp

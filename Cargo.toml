@@ -4,16 +4,24 @@ version = "0.2.0"
 edition = "2021"
 description = "A lean 2d kd-tree ported from OpenCamLib"
 license = "LGPL-2.1-only"
+repository = "https://github.com/eadf/krakel"
 
 [dependencies]
 thiserror = "1.0.50"
-glam = { version = "0.24.2", optional = true }
+#vector-traits = { version = ">0.3.1, <1.0.0", optional = true }
+#vector-traits = { path = "../vector-traits", optional = true }
+vector-traits = {git = "https://github.com/eadf/vector-traits.git", optional = true}
 num-traits = "0.2.17"
 approx = "0.5.1"
 
 [features]
-# needed for tests and impls of PointTrait for glam::Vec2 and glam::DVec2
-glam = ["dep:glam"]
+vector-traits = ["dep:vector-traits"]
+glam = ["vector-traits/glam"]
+cgmath = ["vector-traits/cgmath"]
+
+# Enable the feature glam in vector-traits if vector-traits feature is active
+[package.metadata.dependencies.vector-traits]
+features = ["glam"]
 
 [dev-dependencies]
 rand = "0.8.5"

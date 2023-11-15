@@ -19,16 +19,13 @@ export LLVM_PROFILE_FILE='target/debug/coverage/%p-%m.profraw'
 cargo clean
 
 # Build the project
-cargo build --features "glam"
+cargo build --features "vector-traits,glam,cgmath"
 
 # Run tests
-cargo test --features "glam"
+cargo test --features "vector-traits,glam,cgmath"
 
 # Capture the coverage data
 grcov . -s . --binary-path ./target/debug/ -t html --branch --ignore-not-existing -o ./target/debug/coverage/
-
-#list the index.html files
-find ./target -iname "index.html"
 
 # Open the coverage report in the default web browser
 case $(uname) in

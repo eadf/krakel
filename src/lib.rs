@@ -19,14 +19,26 @@
  *  along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
+//! # Krakel Crate
+//!
+//! `krakel` A tiny 2d kd-tree ported from [OpenCamLib](https://github.com/aewallin/opencamlib)
+//!
+
+#[cfg(not(feature = "vector-traits"))]
+use approx::UlpsEq;
 use std::fmt::Display;
 use std::{
     fmt,
     fmt::Debug,
     ops::{AddAssign, DivAssign, MulAssign, SubAssign},
 };
-use approx::UlpsEq;
+#[cfg(feature = "vector-traits")]
+use vector_traits::approx::UlpsEq;
+
+#[cfg(not(feature = "vector-traits"))]
 use num_traits::{real::Real, FromPrimitive, Zero};
+#[cfg(feature = "vector-traits")]
+use vector_traits::num_traits::{real::Real, FromPrimitive, Zero};
 
 mod impls;
 
